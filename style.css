@@ -68,6 +68,16 @@ section h2 {
   padding: 18px 16px;
   margin-bottom: 16px;
 }
+.problem-summary {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #1f2937;
+  font-size: 0.95rem;
+}
+.problem-summary-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
 .project-header {
   display: flex;
   justify-content: space-between;
