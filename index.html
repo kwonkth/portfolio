@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>김개발 포트폴리오</title>
+  <title>권태형 개발 포트폴리오</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -11,7 +11,7 @@
     <!-- 짧고 인상 깊은 자기소개 -->
     <header>
       <div class="tagline">데이터로 말하고, 코드로 증명하는 개발자</div>
-      <h1>김개발</h1>
+      <h1>권태형</h1>
       <p>
         문제를 정의하는 순간부터 해결 후 회고까지,  
         왜 이렇게 만들었는가?에 답할 수 있는 개발을 지향합니다.
@@ -68,8 +68,8 @@
       <!-- 캡스톤 프로젝트 -->
       <article class="project">
         <div class="project-header">
-          <div class="project-title">SurveyForge – 설문 생성·응답·분석 플랫폼 (Capstone Project)</div>
-          <div class="project-tag">2024.03 – 2024.11 · 팀 프로젝트 (4인, 팀명: 세얼간이 · 권태형 · 하경완 · 함지원)</div>
+          <div class="project-title">Survey Studio – 설문 생성·응답·분석 플랫폼 </div>
+          <div class="project-tag">2025.09 – 2024.11 · 팀 프로젝트 (팀명: 세얼간이 · 권태형 · 하경완 · 함지원)</div>
         </div>
         <p>
           설문 생성부터 응답 수집, 통계 분석까지 한 번에 처리할 수 있는 웹 기반 설문 플랫폼입니다.  
@@ -80,27 +80,26 @@
             <p><strong>Frontend</strong></p>
             <div class="pill-list">
               <span class="pill">HTML</span>
-              <span class="pill">CSS (단일 styles.css)</span>
+              <span class="pill">CSS</span>
               <span class="pill">Vanilla JavaScript</span>
-              <span class="pill">Chart.js (CDN)</span>
+              <span class="pill">Chart.js</span>
             </div>
             <ul>
-              <li>페이지 구성: <code>index.html</code>, <code>dashboard.html</code>, <code>analytics.html</code>, <code>survey.html</code></li>
-              <li>공통 스타일: <code>styles.css</code>에서 반응형 레이아웃, 카드/버튼/모달 컴포넌트 일괄 관리</li>
-              <li>JavaScript 파일 분리: <code>script.js</code>, <code>dashboard.js</code>, <code>analytics.js</code>, <code>survey.js</code></li>
-              <li>Drag & Drop 기반 설문/폴더 정렬 및 DOM 조작으로 설문 생성·편집 UI 구현</li>
-              <li><code>fetch</code> API로 Cloudflare Pages Functions 백엔드와 통신, 설문 통계 렌더링 및 응답 수 시각화</li>
-              <li><code>localStorage</code>를 활용해 임시 상태 및 일부 사용자 선호 데이터 저장</li>
+              <li>순수 HTML/CSS/JS 기반으로 설문 생성 · 응답 · 대시보드 · 통계 화면 구현</li>
+              <li>공통 컴포넌트(카드, 버튼, 모달)를 재사용해 일관된 UI 제공</li>
+              <li>Drag & Drop, 통계 차트 등 인터랙션을 모두 Vanilla JS와 Chart.js로 직접 구현</li>
             </ul>
 
             <p><strong>Backend (Cloudflare Pages Functions)</strong></p>
+            <div class="pill-list">
+              <span class="pill">Cloudflare Pages Functions</span>
+              <span class="pill">JavaScript (ES Modules)</span>
+              <span class="pill">REST API</span>
+            </div>
             <ul>
-              <li><code>functions/api/*.js</code>에 ES Module 기반 핸들러 구성</li>
-              <li><code>onRequestGet</code>, <code>onRequestPost</code>, <code>onRequestPatch</code>, <code>onRequestDelete</code> 패턴으로 REST API 구현</li>
-              <li>설문 CRUD: <code>/api/surveys</code>, <code>/api/surveys/:id</code></li>
-              <li>응답 저장/조회: <code>/api/results</code>, <code>/api/results/:id</code></li>
-              <li>AI 설문 생성: <code>/api/generate-survey</code></li>
-              <li>폴더 관리: <code>/api/folders</code>, <code>/api/folders/:id</code></li>
+              <li>Cloudflare Pages Functions(Workers 런타임) 위에서 JavaScript ES Modules로 백엔드 구현</li>
+              <li><code>onRequest*</code> 패턴으로 설문, 응답, 폴더, AI 설문 생성 등 REST API 엔드포인트 설계</li>
+              <li>프론트엔드와 <code>fetch</code> 기반으로 통신해 설문 CRUD, 응답 수집, 통계 데이터를 주고받음</li>
             </ul>
           </div>
           <div>
@@ -123,27 +122,40 @@
               <li><code>/styles/*.json</code>에 설문 스타일 템플릿을 정의하고, AI 프롬프트에서 불러와 테마/스타일이 적용된 설문 초안 생성</li>
             </ul>
 
-            <p><strong>Infra / 배포 & 설정</strong></p>
-            <ul>
-              <li>Cloudflare Pages로 정적 자원(HTML/CSS/JS) + Pages Functions(서버리스 API) 통합 배포</li>
-              <li><code>wrangler.toml</code>에서 <code>compatibility_date = "2024-11-18"</code>, D1 바인딩(surveyforge) 및 Pages Functions 설정</li>
-              <li>별도의 <code>package.json</code> 없이 번들러·ESLint·Prettier 등 빌드 체인 없이 운영</li>
-              <li>배포 도메인 예시: <code>https://survey-project-a59.pages.dev</code> (Cloudflare Pages 배포)</li>
-            </ul>
-
             <p><strong>문제 해결 과정</strong></p>
             <ul>
               <li>
-                <strong>문제</strong> · 설문을 "재미있게 만들기"라는 요소가 매우 주관적이라, 수작업으로는 일관된 퀄리티의 설문을 만들기 어려웠습니다. 이를 자동화하기 위해 AI 기반 설문 생성 기능을 붙였지만, 설문 스타일·문항 구조를 JSON 템플릿으로 관리하는 구조상 일부 모델(Gemini)의 JSON 출력이 깨지거나 형식이 달라지는 문제가 반복되었습니다.
+                <strong>문제</strong><br />
+                설문을 "재미있게 만들기"라는 요소가 매우 주관적이라,
+                수작업으로는 일관된 퀄리티의 설문을 만들기 어려웠습니다.<br />
+                이를 자동화하기 위해 AI 기반 설문 생성 기능을 붙였지만,
+                설문 스타일·문항 구조를 JSON 템플릿으로 관리하는 구조상
+                일부 모델(Gemini)의 JSON 출력이 깨지거나 형식이 달라지는 문제가 반복되었습니다.
               </li>
               <li>
-                <strong>접근</strong> · <code>/styles/*.json</code> 템플릿을 LLM에 함께 전달하는 구조를 유지한 채, JSON 출력 안정성이 높은 모델을 찾는 데 집중했습니다. OpenRouter API를 통해 여러 모델을 비교 테스트한 결과, Gemini 계열은 응답 형식이 일정하지 않아 파싱 오류가 잦았던 반면, Claude Haiku 4.5는 긴 문항 구조와 스타일 정보를 포함한 프롬프트에도 구조화된 JSON을 안정적으로 반환한다는 점을 확인했습니다.
+                <strong>접근</strong><br />
+                <code>/styles/*.json</code> 템플릿을 LLM에 함께 전달하는 구조는 유지하되,
+                "정확한 JSON을 안정적으로 반환하는 모델"을 찾는 데 집중했습니다.<br />
+                OpenRouter API를 통해 여러 모델을 비교 테스트한 결과,
+                Gemini 계열은 응답 형식이 일정하지 않아 파싱 오류가 잦았던 반면,<br />
+                Claude Haiku 4.5는 긴 문항 구조와 스타일 정보를 포함한 프롬프트에도
+                구조화된 JSON을 안정적으로 반환한다는 점을 확인했습니다.
               </li>
               <li>
-                <strong>프롬프트/검증 개선</strong> · 설문 스키마를 명확히 명세하고, "반드시 JSON만 출력"하도록 조건을 강화했습니다. 또한 서버 측에서 응답을 파싱할 때 형식이 조금이라도 어긋나면 자동 수정 또는 오류를 반환하는 검증 로직을 추가해, 모델 교체 후에도 안정성을 확보했습니다.
+                <strong>프롬프트 · 검증 개선</strong><br />
+                설문 스키마를 명확히 명세하고, "반드시 JSON만 출력"하도록 조건을 강화했습니다.<br />
+                또한 서버 측에서 응답을 파싱할 때 형식이 조금이라도 어긋나면
+                자동 수정 또는 오류를 반환하는 검증 로직을 추가해,
+                모델 교체 후에도 안정성을 확보했습니다.
               </li>
               <li>
-                <strong>결과</strong> · JSON 템플릿 기반 자동 설문 생성 기능이 안정적으로 동작하게 되었고, 생성되는 설문의 완성도와 일관성이 크게 향상되었습니다. 사용자는 "어떤 유형의 설문을 만들고 싶은지"만 선택하면, 바로 배포 가능한 수준의 설문 초안을 얻을 수 있는 흐름을 구축했습니다. 기술적 제약(Gemini의 JSON 호환 문제)을 우회하고, 가장 적합한 모델(Claude Haiku 4.5)을 선택해 기능의 품질을 실질적으로 끌어올린 사례로 정리할 수 있습니다.
+                <strong>결과</strong><br />
+                JSON 템플릿 기반 자동 설문 생성 기능이 안정적으로 동작하게 되었고,
+                생성되는 설문의 완성도와 일관성이 크게 향상되었습니다.<br />
+                사용자는 "어떤 유형의 설문을 만들고 싶은지"만 선택하면,
+                바로 배포 가능한 수준의 설문 초안을 얻을 수 있는 흐름을 구축했습니다.<br />
+                기술적 제약(Gemini의 JSON 호환 문제)을 우회하고,
+                가장 적합한 모델(Claude Haiku 4.5)을 선택해 기능의 품질을 실질적으로 끌어올린 사례로 정리할 수 있습니다.
               </li>
             </ul>
           </div>

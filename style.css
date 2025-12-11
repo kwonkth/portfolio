@@ -4,6 +4,7 @@ body {
   background: #0f172a;
   color: #e5e7eb;
   line-height: 1.6;
+  font-weight: 500;
 }
 a {
   color: #38bdf8;
@@ -13,7 +14,8 @@ a:hover {
   text-decoration: underline;
 }
 .container {
-  max-width: 960px;
+  max-width: 1200px;
+  width: 80%;
   margin: 0 auto;
   padding: 32px 20px 80px;
 }
